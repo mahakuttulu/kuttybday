@@ -55,6 +55,18 @@ function fadeHide(el,ms=500){return new Promise(r=>{el.style.transition=`opacity
 
   function onTap(){
     cancelAnimationFrame(raf);
+
+    // 🔊 Unlock audio FIRST — must be synchronous within the gesture
+    const bgm=document.getElementById("main-audio");
+    bgm.muted=false;
+    bgm.volume=0.85;
+    const unlockPlay=bgm.play();
+    if(unlockPlay!==undefined){
+      unlockPlay.catch(()=>{
+        document.addEventListener('touchstart',()=>bgm.play().catch(()=>{}),{once:true});
+      });
+    }
+
     const s3vid=document.getElementById("tessa-video");
     s3vid.preload="auto";
     s3vid.load();
@@ -62,14 +74,13 @@ function fadeHide(el,ms=500){return new Promise(r=>{el.style.transition=`opacity
     const vid=document.getElementById("intro-video");
     introSc.style.display="flex";
     vid.muted=true;vid.play().catch(()=>{});
-    const bgm=document.getElementById("main-audio");
-    bgm.volume=0.85;bgm.play().catch(()=>{});
     burst(innerWidth/2,innerHeight/2,["💖","✨","💗","🌟","🌸","💫"]);
     ss.style.transition="opacity .5s";ss.style.opacity="0";
     setTimeout(()=>{ss.style.display="none";},500);
     prog(5);
     runFlow(vid,introSc);
   }
+
   document.getElementById("start-btn").addEventListener("click",onTap,{once:true});
   document.getElementById("start-btn").addEventListener("touchstart",e=>{e.preventDefault();onTap();},{once:true,passive:false});
 })();
