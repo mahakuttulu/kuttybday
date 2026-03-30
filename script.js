@@ -53,19 +53,29 @@ function fadeHide(el,ms=500){return new Promise(r=>{el.style.transition=`opacity
   let raf;
   (function draw(){ctx.clearRect(0,0,cv.width,cv.height);pts.forEach(p=>{p.y+=p.vy;p.x+=p.vx;p.op+=p.od;if(p.op>=1||p.op<=0)p.od*=-1;if(p.y<-30){p.y=cv.height+10;p.x=Math.random()*cv.width;}ctx.globalAlpha=p.op*.6;ctx.font=`${p.sz}px serif`;ctx.fillText(p.e,p.x,p.y);});ctx.globalAlpha=1;raf=requestAnimationFrame(draw);})();
 
-  function onTap(){
+function onTap(){
     cancelAnimationFrame(raf);
 
-    // 🔊 Unlock audio FIRST — must be synchronous within the gesture
+    // 🔊 Force unlock audio on Android Chrome
     const bgm=document.getElementById("main-audio");
     bgm.muted=false;
     bgm.volume=0.85;
-    const unlockPlay=bgm.play();
-    if(unlockPlay!==undefined){
-      unlockPlay.catch(()=>{
-        document.addEventListener('touchstart',()=>bgm.play().catch(()=>{}),{once:true});
-      });
+    bgm.currentTime=0;
+    const AudioContext=window.AudioContext||window.webkitAudioContext;
+    if(AudioContext){
+      try{
+        const ac=new AudioContext();
+        if(ac.state==='suspended'){ac.resume();}
+        const src=ac.createMediaElementSource(bgm);
+        src.connect(ac.destination);
+      }catch(e){}
     }
+    bgm.play().catch(()=>{
+      document.addEventListener('touchstart',()=>{
+        bgm.currentTime=0;
+        bgm.play().catch(()=>{});
+      },{once:true});
+    });
 
     const s3vid=document.getElementById("tessa-video");
     s3vid.preload="auto";
@@ -84,7 +94,6 @@ function fadeHide(el,ms=500){return new Promise(r=>{el.style.transition=`opacity
   document.getElementById("start-btn").addEventListener("click",onTap,{once:true});
   document.getElementById("start-btn").addEventListener("touchstart",e=>{e.preventDefault();onTap();},{once:true,passive:false});
 })();
-
 async function runFlow(vid,introSc){
   await new Promise(res=>{let done=false;const go=()=>{if(!done){done=true;res();}};vid.addEventListener("ended",go,{once:true});setTimeout(go,12000);});
   await fadeHide(introSc,400);
