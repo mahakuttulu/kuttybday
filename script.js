@@ -56,39 +56,45 @@ function fadeHide(el,ms=500){return new Promise(r=>{el.style.transition=`opacity
 function onTap(){
     cancelAnimationFrame(raf);
 
-    // 🔊 Force unlock audio on Android Chrome
     const bgm=document.getElementById("main-audio");
-    bgm.muted=false;
     bgm.volume=0.85;
-    bgm.currentTime=0;
-    const AudioContext=window.AudioContext||window.webkitAudioContext;
-    if(AudioContext){
-      try{
-        const ac=new AudioContext();
-        if(ac.state==='suspended'){ac.resume();}
-        const src=ac.createMediaElementSource(bgm);
-        src.connect(ac.destination);
-      }catch(e){}
-    }
-    bgm.play().catch(()=>{
-      document.addEventListener('touchstart',()=>{
-        bgm.currentTime=0;
-        bgm.play().catch(()=>{});
-      },{once:true});
-    });
 
     const s3vid=document.getElementById("tessa-video");
     s3vid.preload="auto";
     s3vid.load();
     const introSc=document.getElementById("intro-screen");
     const vid=document.getElementById("intro-video");
-    introSc.style.display="flex";
-    vid.muted=true;vid.play().catch(()=>{});
-    burst(innerWidth/2,innerHeight/2,["💖","✨","💗","🌟","🌸","💫"]);
-    ss.style.transition="opacity .5s";ss.style.opacity="0";
-    setTimeout(()=>{ss.style.display="none";},500);
-    prog(5);
-    runFlow(vid,introSc);
+
+    bgm.play().then(()=>{
+      console.log("✅ BGM playing");
+      // Audio unlocked — start everything normally
+      introSc.style.display="flex";
+      vid.muted=true;vid.play().catch(()=>{});
+      burst(innerWidth/2,innerHeight/2,["💖","✨","💗","🌟","🌸","💫"]);
+      ss.style.transition="opacity .5s";ss.style.opacity="0";
+      setTimeout(()=>{ss.style.display="none";},500);
+      prog(5);
+      runFlow(vid,introSc);
+    }).catch((err)=>{
+      console.log("❌ BGM error:",err.name, err.message);
+      // Show overlay — nothing starts until user taps
+      const overlay=document.createElement("div");
+      overlay.style.cssText="position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.85);flex-direction:column;gap:16px;cursor:pointer";
+      overlay.innerHTML='<div style="font-size:60px">🔊</div><div style="font-family:Pacifico,cursive;font-size:22px;color:#fff;text-align:center;padding:0 24px">Tap anywhere to enable music 💖</div>';
+      document.body.appendChild(overlay);
+      overlay.addEventListener("click",()=>{
+        overlay.remove();
+        bgm.play().catch(()=>{});
+        // Now start video + flow after overlay tap
+        introSc.style.display="flex";
+        vid.muted=true;vid.play().catch(()=>{});
+        burst(innerWidth/2,innerHeight/2,["💖","✨","💗","🌟","🌸","💫"]);
+        ss.style.transition="opacity .5s";ss.style.opacity="0";
+        setTimeout(()=>{ss.style.display="none";},500);
+        prog(5);
+        runFlow(vid,introSc);
+      },{once:true});
+    });
   }
 
   document.getElementById("start-btn").addEventListener("click",onTap,{once:true});
