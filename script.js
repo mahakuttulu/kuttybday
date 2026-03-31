@@ -186,9 +186,6 @@ function fadeHide(el, ms = 500) {
     const bgm=document.getElementById("main-audio");
     bgm.volume=0.85;
 
-    const s3vid=document.getElementById("tessa-video");
-    s3vid.preload="auto";
-    s3vid.load();
     const introSc=document.getElementById("intro-screen");
     const vid=document.getElementById("intro-video");
 
@@ -975,49 +972,7 @@ function showCakeScreen(){
 /* ══════════════════════════════════════
    VIDEO PLAYBACK
 ══════════════════════════════════════ */
-function playVideo() {
-  prog(98);
-  flash(() => {
-    const vs = document.getElementById("video-screen");
-    const vid = document.getElementById("tessa-video");
-    vs.style.display = "block";
-    toast("💗", 4000);
-    vid.muted = false;
-    vid.volume = 1;
-    setTimeout(() => {
-      const pp = vid.play();
-      if (pp) {
-        pp.catch(() => {
-          const h = document.createElement("div");
-          h.style.cssText = "position:fixed;inset:0;z-index:165;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);cursor:pointer;flex-direction:column;gap:16px";
-          h.innerHTML = '<div style="font-size:clamp(60px,15vw,100px)">▶</div><div style="font-family:Pacifico,cursive;font-size:clamp(16px,3vw,24px);color:#fff;letter-spacing:2px;text-shadow:0 0 20px #ff4d6d">tap to play 💗</div>';
-          document.body.appendChild(h);
-          h.addEventListener(
-            "click",
-            () => {
-              vid.play().catch(() => {});
-              h.remove();
-            },
-            { once: true },
-          );
-        });
-      }
-    }, 80);
-    vid.addEventListener(
-      "ended",
-      () => {
-        vs.style.transition = "opacity 1s";
-        vs.style.opacity = "0";
-        setTimeout(() => {
-          vs.style.display = "none";
-          vs.style.opacity = "";
-          finalScreen();
-        }, 1000);
-      },
-      { once: true },
-    );
-  }, "#ff4d6d44");
-}
+
 
 function spawnConfetti() {
   const cc = ["#ff4d6d", "#ff9f43", "#ffd700", "#a29bfe", "#00cec9", "#fd79a8", "#fff"];
@@ -1035,9 +990,12 @@ function finalScreen() {
   fs.classList.add("active");
   flash(null, "#ff4d6d55");
   prog(100);
-  startAurora();
-  startPetals();
-  startFireworks();
+
+  // stagger heavy animations so they don't all hit at once
+  setTimeout(()=>startAurora(), 0);
+  setTimeout(()=>startPetals(), 300);
+  setTimeout(()=>startFireworks(), 600);
+
   [
     ["final-cake", 200],
     ["final-title", 600],
@@ -1046,6 +1004,8 @@ function finalScreen() {
     ["final-message", 1900],
     ["final-emojis", 2300],
   ].forEach(([id, d]) => setTimeout(() => document.getElementById(id).classList.add("show"), d));
+
+  // stagger confetti in smaller batches after 600ms delay
   const cc = ["#ff4d6d", "#ff9f43", "#ffd700", "#a29bfe", "#00cec9", "#fd79a8", "#fff"];
   for (let i = 0; i < 200; i++)
     setTimeout(() => {
@@ -1053,7 +1013,8 @@ function finalScreen() {
       el.style.cssText = `position:fixed;top:-20px;left:${Math.random() * 100}vw;width:${5 + Math.random() * 9}px;height:${5 + Math.random() * 9}px;border-radius:${Math.random() > 0.5 ? "50%" : "2px"};background:${cc[Math.floor(Math.random() * cc.length)]};animation:confettiFall ${2.5 + Math.random() * 3}s linear forwards;animation-delay:${Math.random() * 2}s;z-index:175;pointer-events:none`;
       document.body.appendChild(el);
       setTimeout(() => el.remove(), 6000);
-    }, i * 18);
+    }, 600 + i * 18);
+
   setTimeout(() => {
     [
       [80, 80],
@@ -1061,7 +1022,8 @@ function finalScreen() {
       [80, innerHeight - 80],
       [innerWidth - 80, innerHeight - 80],
     ].forEach(([x, y], i) => setTimeout(() => burst(x, y, ["💖", "🌟", "✨", "🎉", "🌸", "💗"]), i * 200));
-  }, 800);
+  }, 1200);
+
   setInterval(() => burst(80 + Math.random() * (innerWidth - 160), 80 + Math.random() * (innerHeight - 160), ["💗", "✨", "💖", "🌟", "🎊", "🌸"]), 3500);
   toast("👊👊👊👊👊", 6000);
 }
@@ -1906,7 +1868,7 @@ function startStoryReel() {
     }
   }
 
-  const SCENES = ["sc1", "sc2", "sc3", "sc4", "sc5", "sc6"];
+const SCENES = ["sc1", "sc2", "sc3", "sc4", "sc5", "sc6"];
   function goScene(i) {
     if (i >= SCENES.length) {
       root.style.transition = "opacity .9s ease";
@@ -1915,7 +1877,7 @@ function startStoryReel() {
         root.style.display = "none";
         root.style.opacity = "";
         await showCakeScreen();
-        playVideo();
+        setTimeout(()=>finalScreen(), 100);
       }, 900);
       return;
     }
