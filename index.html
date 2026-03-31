@@ -1,300 +1,325 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👊</text></svg>">
-  <title>Kuttulu Birth Day</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;700;900&family=Dancing+Script:wght@600;700&family=Caveat:wght@400;600&family=Righteous&family=Orbitron:wght@700;900&family=Cinzel:wght@600;700&family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,600&family=Sacramento&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
-</head>
-<body>
-
-<div id="start-screen">
-  <canvas id="start-particles"></canvas>
-  <div id="start-content">
-    <div id="start-hearts">💗</div>
-    <div id="start-title">For You</div>
-    <div id="start-sub">chala chala chala chinna gift...</div>
-    <button id="start-btn">
-      <span class="sbr"></span><span class="sbr"></span><span class="sbr"></span>
-      <span class="sbi">💖</span>
-      <span class="sbt">Open Cheyandi</span>
-    </button>
-  </div>
-</div>
-
-<div id="intro-screen">
-  <video id="intro-video" src="images/s1.mp4" playsinline muted preload="auto"></video>
-</div>
-
-<audio id="main-audio" src="images/s1.mp3" preload="auto"></audio>
-<div id="cursor">💗</div>
-<div id="ambient-glow"></div>
-<div id="progress-bar-wrap"><div id="progress-bar"></div></div>
-<div id="screen-flash"></div>
-<div id="toast"></div>
-
-<div id="hate-screen"></div>
-
-<div id="countdown-screen">
-  <canvas id="countdown-particles"></canvas>
-  <div id="countdown-number"></div>
-</div>
-
-<div id="letter-screen">
-  <div id="letter-ambient"></div>
-  <div class="lbg" style="width:400px;height:400px;background:#8b0000;top:-100px;left:-100px"></div>
-  <div class="lbg" style="width:300px;height:300px;background:#4a0e2e;bottom:-80px;right:-80px"></div>
-  <div id="letter-floaties"></div>
-  <div id="letter-card">
-    <div class="letter-page active" id="lpage-1">
-      <div class="lc-to">To my Kuttuluu ❤️</div>
-      <div class="lc-body">
-        <p id="lp1">Happyyyy Birthdayyyy Kuttyyy 🎂</p>
-        <p id="lp2">Eee prapancham lo intha mandi undaga enduko meeru na life loki ravadam chala lucky anipistadi. Eppudu meetho matladina gunde jallu mantadi edo teliyiani feeling anubhaviste kani telidu emo</p>
-        <p id="lp3">Nannu edo oka special person laga chustaru.. oka spark vastadi adi naku eppatiki gurtuntadi. Adi evari kallalonu ippativaraku chudale. 🌸</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👊</text></svg>" />
+    <title>Kuttulu BirthDay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;700;900&family=Dancing+Script:wght@600;700&family=Caveat:wght@400;600&family=Righteous&family=Orbitron:wght@700;900&family=Cinzel:wght@600;700&family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,600&family=Sacramento&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="start-screen">
+      <canvas id="start-particles"></canvas>
+      <div id="start-content">
+        <div id="start-hearts">💗</div>
+        <div id="start-title">For You</div>
+        <div id="start-sub">chala chala chala chinna gift...</div>
+        <button id="start-btn">
+          <span class="sbr"></span><span class="sbr"></span><span class="sbr"></span>
+          <span class="sbi">💖</span>
+          <span class="sbt">Open Cheyandi</span>
+        </button>
       </div>
     </div>
-    <div class="letter-page" id="lpage-2">
-      <div class="lc-body" style="margin-top:34px">
-        <p id="lp4"></p>
-        <p id="lp5"></p>
-        <p id="lp6"></p>
-      </div>
-      <div class="lc-deco">🌸 ♥ 🌸 ♥ 🌸</div>
-      <div class="lc-sign" id="lc-sign"></div>
-    </div>
-    <div class="page-dots">
-      <div class="page-dot active" id="dot-1"></div>
-      <div class="page-dot" id="dot-2"></div>
-    </div>
-    <div class="letter-nav">
-      <button id="btn-prev" style="opacity:0;pointer-events:none">🙂‍↔️</button>
-      <button id="btn-next">🙂‍↔️</button>
-    </div>
-  </div>
-</div>
 
-<div id="love-screen">
-  <div id="punch-emoji">👊</div>
-  <div id="bday-text">🎂<br/>Happy Birthday Kuttuluuuu!</div>
-  <div id="sub-text">✦ ✦</div>
-</div>
+    <div id="intro-screen">
+      <video id="intro-video" src="images/s1.mp4" playsinline muted preload="auto"></video>
+    </div>
 
-<div id="surprise-screen">
-  <div id="surprise-inner">
-    <div class="surp-icon">🎁</div>
-    <div class="surp-label">A Surprise for You!</div>
-    <div class="surp-sub"></div>
-  </div>
-  <div id="chat-thread"></div>
-</div>
+    <audio id="main-audio" src="images/s1.mp3" preload="auto"></audio>
 
-<div id="gift-open-screen">
-  <canvas id="gift-bg-canvas"></canvas>
-  <div id="gbox-wrap">
-    <div id="gbox">
-      <div id="gbox-lid"><div id="lid-ribbon"></div></div>
-      <div id="gbox-body">
-        <div id="body-ribbon-v"></div>
-        <div id="body-ribbon-h"></div>
-        <div id="box-inner-glow"></div>
-      </div>
-      <div id="gbox-bow">🎀</div>
-      <div class="wrap-strip tl"></div>
-      <div class="wrap-strip tr"></div>
-      <div class="wrap-strip bl"></div>
-      <div class="wrap-strip br"></div>
-      <div id="gift-reveal">🎂✨</div>
-    </div>
-    <div id="gift-hint">tap to unwrap</div>
-  </div>
-</div>
+    <div id="cursor">💗</div>
+    <div id="ambient-glow"></div>
+    <div id="progress-bar-wrap"><div id="progress-bar"></div></div>
+    <div id="screen-flash"></div>
+    <div id="toast"></div>
 
-<div id="cake-screen">
-  <div id="cake-bg"></div>
-  <div id="cake-floaties"></div>
-  <div id="cake-candle-glow"></div>
-  <canvas id="cake-particles" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2"></canvas>
-  <div id="candle-count-badge">🕯️ 24</div>
-  <div id="cake-content">
-    <div id="cake-title">🌟</div>
-    <div id="cake-svg-wrap">
-      <canvas id="cake-canvas" width="500" height="360"></canvas>
-    </div>
-    <div id="blow-btn-wrap">
-      <div id="blow-btn">
-        <span class="bbr"></span><span class="bbr"></span><span class="bbr"></span>
-        <svg id="blow-ring-svg" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="blowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#ffd700"/>
-              <stop offset="50%" stop-color="#ff9f43"/>
-              <stop offset="100%" stop-color="#ff4d6d"/>
-            </linearGradient>
-          </defs>
-          <circle id="blow-ring-track" cx="80" cy="80" r="72"/>
-          <circle id="blow-ring-fill" cx="80" cy="80" r="72"/>
-        </svg>
-        <span id="blow-icon">💨</span>
-        <span id="blow-btn-label">hold to<br>blow</span>
-      </div>
-      <div id="blow-hint">hold the button to blow out candles 🎂</div>
-    </div>
-  </div>
-  <div id="blow-celebration"></div>
-</div>
+    <div id="hate-screen"></div>
 
-<div id="story-screen">
-  <div id="sline"></div>
-  <div class="sc" id="sc1">
-    <div id="sc1-map-bg"></div>
-    <div id="sc1-grid"></div>
-    <canvas id="sc1-map-canvas"></canvas>
-    <div class="loc-pin" id="lp-g" style="left:28%;top:62%">
-      <div class="loc-dot" style="background:#ff9f43;color:#ff9f43;border-color:#ff9f43"></div>
-      <div class="loc-tag">📍 Guntur · K</div>
+    <div id="countdown-screen">
+      <canvas id="countdown-particles"></canvas>
+      <div id="countdown-number"></div>
     </div>
-    <div class="loc-pin" id="lp-t" style="left:40%;top:55%">
-      <div class="loc-dot" style="background:#ffd700;color:#ffd700;border-color:#ffd700"></div>
-      <div class="loc-tag">📍 Tuni · P</div>
-    </div>
-    <div class="loc-pin" id="lp-l" style="left:22%;top:18%">
-      <div class="loc-dot" style="background:#06d6a0;color:#06d6a0;border-color:#06d6a0"></div>
-      <div class="loc-tag">🎓 LPU, Punjab</div>
-    </div>
-    <div id="sc1-vignette"></div>
-    <div class="sc-side sc1-side">
-      <div class="sc-side-year">2019</div>
-      <div class="sc-side-title">Ekkada Guntur - Ekkada Tuni - Ekkada Punjab <br/>Destiny andi Destinyyyy.</div>
-      <div class="sc-side-divider" style="background:linear-gradient(90deg,#4fc3f7,#06d6a0)"></div>
-    </div>
-  </div>
-  <div class="sc" id="sc2">
-    <div id="sc2-glow"></div>
-    <canvas id="sc2-sparks"></canvas>
-    <div class="yr-stamp">2022</div>
-    <div class="sc2-phone-wrap">
-      <div class="sc2-phone">
-        <div class="sc2-notch"><div class="sc2-pill"></div></div>
-        <div class="sc2-hdr">
-          <div class="sc2-blink"></div>
-          <div class="sc2-appname">LPU Live</div>
-          <div class="sc2-live">● online</div>
+
+    <div id="letter-screen">
+      <div id="letter-ambient"></div>
+      <div class="lbg" style="width: 400px; height: 400px; background: #8b0000; top: -100px; left: -100px"></div>
+      <div class="lbg" style="width: 300px; height: 300px; background: #4a0e2e; bottom: -80px; right: -80px"></div>
+      <div id="letter-floaties"></div>
+      <div id="letter-card">
+        <div class="letter-page active" id="lpage-1">
+          <div class="lc-to">To my Kuttuluu ❤️</div>
+          <div class="lc-body">
+            <p id="lp1">Happyyyy Birthdayyyy Kuttyyy 🎂</p>
+            <p id="lp2">Eee prapancham lo intha mandi undaga enduko meeru na life loki ravadam chala lucky anipistadi. Eppudu meetho matladina gunde jallu mantadi edo teliyiani feeling anubhaviste kani telidu emo</p>
+            <p id="lp3">Nannu edo oka special person laga chustaru.. oka spark vastadi adi naku eppatiki gurtuntadi. Adi evari kallalonu ippativaraku chudale. 🌸</p>
+          </div>
         </div>
-        <div class="sc2-avatars">
-          <div class="sc2-av"><div class="sc2-avimg av-p">🧑</div><div class="sc2-avlabel">P</div></div>
-          <div class="sc2-conn"><div class="sc2-dot"></div><div class="sc2-dot"></div><div class="sc2-dot"></div></div>
-          <div class="sc2-av"><div class="sc2-avimg av-k">👩</div><div class="sc2-avlabel">K</div></div>
+        <div class="letter-page" id="lpage-2">
+          <div class="lc-body" style="margin-top: 34px">
+            <p id="lp4"></p>
+            <p id="lp5"></p>
+            <p id="lp6"></p>
+          </div>
+          <div class="lc-deco">🌸 ♥ 🌸 ♥ 🌸</div>
+          <div class="lc-sign" id="lc-sign"></div>
         </div>
-        <div class="sc2-divider"></div>
-        <div class="sc2-msgs" id="sc2msgs"></div>
-      </div>
-    </div>
-    <div class="sc-side">
-      <div class="sc-side-year">Jun 7, 2022</div>
-      <div class="sc-side-title">Oka message<br/>Motham marchesindi</div>
-      <div class="sc-side-divider" style="background:linear-gradient(90deg,#ff5500,#ffaa00)"></div>
-    </div>
-  </div>
-  <div class="sc" id="sc3">
-    <div id="sc3-bg"></div>
-    <div id="sc3-ceiling"></div>
-    <div id="sc3-light-fixture"></div>
-    <div class="yr-stamp">2022</div>
-    <div id="sc3-wall"></div>
-    <div id="sc3-lightcone"></div>
-    <div id="sc3-floor"></div>
-    <div id="sc3-floor-reflect"></div>
-    <div id="sc3-dust"></div>
-    <div id="sc3-door-wrap">
-      <div class="bigdoor">
-        <div class="bigdoor-num">37</div>
-        <div class="bigdoor-num" style="opacity:.5;font-size:70%">—</div>
-        <div class="bigdoor-num">911</div>
-        <div class="bigdoor-handle"></div>
-      </div>
-    </div>
-    <div id="sc3-spill"></div>
-    <div class="sc-side">
-      <div class="sc-side-year">2022</div>
-      <div class="sc-side-title">Aaa room lone<br/>mimmalini first time live lo chusa 💘</div>
-      <div class="sc-side-divider" style="background:linear-gradient(90deg,#ffd700,#ff9f43)"></div>
-    </div>
-  </div>
-  <div class="sc" id="sc4">
-    <div id="sc4-bg"></div>
-    <div id="sc4-scanlines"></div>
-    <canvas id="sc4-matrix"></canvas>
-    <div class="yr-stamp">2022</div>
-    <div class="num-scene">
-      <div class="nb nb-p" id="nb1">"Phone number ivvachu ga?" 😊</div>
-      <div id="sc4-num">_ _ _ _ _ _ _ _ _ _</div>
-      <div class="nb nb-saved" id="nb2" style="opacity:0;transition:opacity .6s ease .4s">Saved as "K 💛" ✓</div>
-    </div>
-    <div class="sc-side">
-      <div class="sc-side-year">2022</div>
-      <div class="sc-side-title">Saved as<br/>"K 💛"</div>
-      <div class="sc-side-divider" style="background:linear-gradient(90deg,#30d158,#06d6a0)"></div>
-    </div>
-  </div>
-  <div class="sc" id="sc5">
-    <div id="sc5-bg"></div>
-    <canvas id="sc5-ambient"></canvas>
-    <div class="yr-stamp">2022 → 2026</div>
-    <div class="wa-wrap">
-      <div class="wa-phone">
-        <div class="wa-hdr">
-          <div class="wa-hav">👩</div>
-          <div><div class="wa-hnm">K 💛</div><div class="wa-hst">● online</div></div>
+        <div class="page-dots">
+          <div class="page-dot active" id="dot-1"></div>
+          <div class="page-dot" id="dot-2"></div>
         </div>
-        <div class="wa-body" id="wabody"></div>
+        <div class="letter-nav">
+          <button id="btn-prev" style="opacity: 0; pointer-events: none">🙂‍↔️</button>
+          <button id="btn-next">🙂‍↔️</button>
+        </div>
       </div>
     </div>
-    <div class="sc-side">
-      <div class="sc-side-year">2022 → 2026</div>
-      <div class="sc-side-title">Rojulu kadu <br/>nelallu kadu <br/>Inni years manam inka kalisi unnam 👊</div>
-      <div class="sc-side-divider" style="background:linear-gradient(90deg,#06d6a0,#25d366)"></div>
+
+    <div id="love-screen">
+      <div id="punch-emoji">👊</div>
+      <div id="bday-text">🎂<br />Happy Birthday Kuttuluuuu!</div>
+      <div id="sub-text">✦ ✦</div>
     </div>
-  </div>
-  <div class="sc" id="sc6">
-    <div id="sc6-bg"></div>
-    <canvas id="sc6-canvas"></canvas>
-    <div class="bff-centre">
-      <div class="bff-duo" id="bff-duo">🫂</div>
-      <div class="bff-word" id="bw1">Naa Heroineeeeeeeee</div>
-      <div class="bff-word" id="bw2"> 💖</div>
-      <div id="sc6-inf-wrap">
-        <canvas id="sc6-inf-canvas" width="600" height="200"></canvas>
+
+    <div id="surprise-screen">
+      <div id="surprise-inner">
+        <div class="surp-icon">🎁</div>
+        <div class="surp-label">A Surprise for You!</div>
+        <div class="surp-sub"></div>
       </div>
-      <div class="bff-cap" id="bcp">😏</div>
+      <div id="chat-thread"></div>
     </div>
-  </div>
-</div>
 
-<div id="video-screen">
-  <video id="tessa-video" src="images/s3.mp4" playsinline preload="auto"></video>
-</div>
+    <div id="gift-open-screen">
+      <canvas id="gift-bg-canvas"></canvas>
+      <div id="gbox-wrap">
+        <div id="gbox">
+          <div id="gbox-lid"><div id="lid-ribbon"></div></div>
+          <div id="gbox-body">
+            <div id="body-ribbon-v"></div>
+            <div id="body-ribbon-h"></div>
+            <div id="box-inner-glow"></div>
+          </div>
+          <div id="gbox-bow">🎀</div>
+          <div class="wrap-strip tl"></div>
+          <div class="wrap-strip tr"></div>
+          <div class="wrap-strip bl"></div>
+          <div class="wrap-strip br"></div>
+          <div id="gift-reveal">🎂✨</div>
+        </div>
+        <div id="gift-hint">tap to unwrap</div>
+      </div>
+    </div>
 
-<div id="final-screen">
-  <div id="final-aurora"><canvas id="aurora-canvas"></canvas></div>
-  <div id="final-petals"></div>
-  <canvas id="firework-canvas"></canvas>
-  <div class="glow-ring" style="width:300px;height:300px;animation-duration:3s;z-index:1"></div>
-  <div class="glow-ring" style="width:520px;height:520px;animation-duration:4s;animation-delay:.6s;border-color:rgba(255,100,150,.1);z-index:1"></div>
-  <div class="glow-ring" style="width:750px;height:750px;animation-duration:5s;animation-delay:1.2s;border-color:rgba(255,215,0,.08);z-index:1"></div>
-  <div id="final-content">
-    <div id="final-cake">🎂</div>
-    <div id="final-title">Happy Birthday!</div>
-    <div id="final-name">Kuttuluuuu 💖</div>
-    <div id="final-divider">💗 ✨ 💗 ✨ 💗</div>
-    <div id="final-age" style="font-family:'Orbitron',monospace;font-weight:900;font-size:clamp(11px,2vw,15px);letter-spacing:6px;color:rgba(255,215,0,.6);opacity:0;transition:opacity 1s ease 1.55s;text-transform:uppercase;">✦ turning 24 ✦</div>
-    <div id="final-message">Kummeyandiiiiiiii 👊👊👊👊</div>
-    <div id="final-emojis">🎉 🎉 🎉 🎉 🎉</div>
-  </div>
-</div>
+    <div id="cake-screen">
+      <div id="cake-bg"></div>
+      <div id="cake-floaties"></div>
+      <div id="cake-candle-glow"></div>
+      <canvas id="cake-particles" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2"></canvas>
+      <div id="candle-count-badge">🕯️ 1</div>
+      <div id="cake-content">
+        <div id="cake-title">🌟 Happy Birthday Kuttulu! 🌟</div>
+        <div id="cake-wrap">
+          <div class="cake">
+            <div class="plate"></div>
+            <div class="layer layer-bottom"></div>
+            <div class="layer layer-middle"></div>
+            <div class="layer layer-top"></div>
+            <div class="icing"></div>
+            <div class="drip drip1"></div>
+            <div class="drip drip2"></div>
+            <div class="drip drip3"></div>
+            <div class="candle" id="cake-candle">
+              <div class="flame" id="cake-flame"></div>
+            </div>
+          </div>
+        </div>
+        <div id="blow-btn-wrap">
+          <div id="blow-btn">
+            <span class="bbr"></span><span class="bbr"></span><span class="bbr"></span>
+            <svg id="blow-ring-svg" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="blowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#ffd700" />
+                  <stop offset="50%" stop-color="#ff9f43" />
+                  <stop offset="100%" stop-color="#ff4d6d" />
+                </linearGradient>
+              </defs>
+              <circle id="blow-ring-track" cx="80" cy="80" r="72" />
+              <circle id="blow-ring-fill" cx="80" cy="80" r="72" />
+            </svg>
+            <span id="blow-icon">💨</span>
+            <span id="blow-btn-label">Click <br/> Chestu-undandi</span>
+          </div>
+          <div id="blow-hint">Cake Cut Chedamaaaaa 🔪</div>
+        </div>
+      </div>
+      <div id="blow-celebration"></div>
+    </div>
 
-<script src="script.js"></script>
-</body>
+    <div id="story-screen">
+      <div id="sline"></div>
+      <div class="sc" id="sc1">
+        <div id="sc1-map-bg"></div>
+        <div id="sc1-grid"></div>
+        <canvas id="sc1-map-canvas"></canvas>
+        <div class="loc-pin" id="lp-g" style="left: 28%; top: 62%">
+          <div class="loc-dot" style="background: #ff9f43; color: #ff9f43; border-color: #ff9f43"></div>
+          <div class="loc-tag">📍 Guntur · K</div>
+        </div>
+        <div class="loc-pin" id="lp-t" style="left: 40%; top: 55%">
+          <div class="loc-dot" style="background: #ffd700; color: #ffd700; border-color: #ffd700"></div>
+          <div class="loc-tag">📍 Tuni · P</div>
+        </div>
+        <div class="loc-pin" id="lp-l" style="left: 22%; top: 18%">
+          <div class="loc-dot" style="background: #06d6a0; color: #06d6a0; border-color: #06d6a0"></div>
+          <div class="loc-tag">🎓 LPU, Punjab</div>
+        </div>
+        <div id="sc1-vignette"></div>
+        <div class="sc-side sc1-side">
+          <div class="sc-side-year">2019</div>
+          <div class="sc-side-title">Ekkada Guntur - Ekkada Tuni - Ekkada Punjab <br />Destiny andi Destinyyyy.</div>
+          <div class="sc-side-divider" style="background: linear-gradient(90deg, #4fc3f7, #06d6a0)"></div>
+        </div>
+      </div>
+      <div class="sc" id="sc2">
+        <div id="sc2-glow"></div>
+        <canvas id="sc2-sparks"></canvas>
+        <div class="yr-stamp">2022</div>
+        <div class="sc2-phone-wrap">
+          <div class="sc2-phone">
+            <div class="sc2-notch"><div class="sc2-pill"></div></div>
+            <div class="sc2-hdr">
+              <div class="sc2-blink"></div>
+              <div class="sc2-appname">LPU Live</div>
+              <div class="sc2-live">● online</div>
+            </div>
+            <div class="sc2-avatars">
+              <div class="sc2-av">
+                <div class="sc2-avimg av-p">🧑</div>
+                <div class="sc2-avlabel">P</div>
+              </div>
+              <div class="sc2-conn">
+                <div class="sc2-dot"></div>
+                <div class="sc2-dot"></div>
+                <div class="sc2-dot"></div>
+              </div>
+              <div class="sc2-av">
+                <div class="sc2-avimg av-k">👩</div>
+                <div class="sc2-avlabel">K</div>
+              </div>
+            </div>
+            <div class="sc2-divider"></div>
+            <div class="sc2-msgs" id="sc2msgs"></div>
+          </div>
+        </div>
+        <div class="sc-side">
+          <div class="sc-side-year">Jun 7, 2022</div>
+          <div class="sc-side-title">Oka message<br />Idanta Start avvadaniki karanamaiyindi</div>
+          <div class="sc-side-divider" style="background: linear-gradient(90deg, #ff5500, #ffaa00)"></div>
+        </div>
+      </div>
+      <div class="sc" id="sc3">
+        <div id="sc3-bg"></div>
+        <div id="sc3-ceiling"></div>
+        <div id="sc3-light-fixture"></div>
+        <div class="yr-stamp">2022</div>
+        <div id="sc3-wall"></div>
+        <div id="sc3-lightcone"></div>
+        <div id="sc3-floor"></div>
+        <div id="sc3-floor-reflect"></div>
+        <div id="sc3-dust"></div>
+        <div id="sc3-door-wrap">
+          <div class="bigdoor">
+            <div class="bigdoor-num">37</div>
+            <div class="bigdoor-num" style="opacity: 0.5; font-size: 70%">—</div>
+            <div class="bigdoor-num">911</div>
+            <div class="bigdoor-handle"></div>
+          </div>
+        </div>
+        <div id="sc3-spill"></div>
+        <div class="sc-side">
+          <div class="sc-side-year">2022</div>
+          <div class="sc-side-title">Aaa room lone<br />mimmalini first time live lo chusa (kollagotte)💘</div>
+          <div class="sc-side-divider" style="background: linear-gradient(90deg, #ffd700, #ff9f43)"></div>
+        </div>
+      </div>
+      <div class="sc" id="sc4">
+        <div id="sc4-bg"></div>
+        <div id="sc4-scanlines"></div>
+        <canvas id="sc4-matrix"></canvas>
+        <div class="yr-stamp">2022</div>
+        <div class="num-scene">
+          <div class="nb nb-p" id="nb1">"Phone number ivvachu ga?" 😊</div>
+          <div id="sc4-num">_ _ _ _ _ _ _ _ _ _</div>
+          <div class="nb nb-saved" id="nb2" style="opacity: 0; transition: opacity 0.6s ease 0.4s">Saved as "K 💛" ✓</div>
+        </div>
+        <div class="sc-side">
+          <div class="sc-side-year">2022</div>
+          <div class="sc-side-title">Number <br />"Icharochhhhhh💛"</div>
+          <div class="sc-side-divider" style="background: linear-gradient(90deg, #30d158, #06d6a0)"></div>
+        </div>
+      </div>
+      <div class="sc" id="sc5">
+        <div id="sc5-bg"></div>
+        <canvas id="sc5-ambient"></canvas>
+        <div class="yr-stamp">2022 → 2026</div>
+        <div class="wa-wrap">
+          <div class="wa-phone">
+            <div class="wa-hdr">
+              <div class="wa-hav">👩</div>
+              <div>
+                <div class="wa-hnm">K 💛</div>
+                <div class="wa-hst">● online</div>
+              </div>
+            </div>
+            <div class="wa-body" id="wabody"></div>
+          </div>
+        </div>
+        <div class="sc-side">
+          <div class="sc-side-year">2022 → 2026</div>
+          <div class="sc-side-title">Rojulu kadu <br />nelallu kadu <br />Chala time spend chesammm 👊</div>
+          <div class="sc-side-divider" style="background: linear-gradient(90deg, #06d6a0, #25d366)"></div>
+        </div>
+      </div>
+      <div class="sc" id="sc6">
+        <div id="sc6-bg"></div>
+        <canvas id="sc6-canvas"></canvas>
+        <div class="bff-centre">
+          <div class="bff-duo" id="bff-duo">🫂</div>
+          <div class="bff-word" id="bw1">Naa Heroineeeeeeeee</div>
+          <div class="bff-word" id="bw2">💖</div>
+          <div id="sc6-inf-wrap">
+            <canvas id="sc6-inf-canvas" width="600" height="200"></canvas>
+          </div>
+          <div class="bff-cap" id="bcp">😏</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="video-screen">
+      <video id="tessa-video" src="images/s3.mp4" playsinline preload="auto"></video>
+    </div>
+
+    <div id="final-screen">
+      <div id="final-aurora"><canvas id="aurora-canvas"></canvas></div>
+      <div id="final-petals"></div>
+      <canvas id="firework-canvas"></canvas>
+      <div class="glow-ring" style="width: 300px; height: 300px; animation-duration: 3s; z-index: 1"></div>
+      <div class="glow-ring" style="width: 520px; height: 520px; animation-duration: 4s; animation-delay: 0.6s; border-color: rgba(255, 100, 150, 0.1); z-index: 1"></div>
+      <div class="glow-ring" style="width: 750px; height: 750px; animation-duration: 5s; animation-delay: 1.2s; border-color: rgba(255, 215, 0, 0.08); z-index: 1"></div>
+      <div id="final-content">
+        <div id="final-cake">🎂</div>
+        <div id="final-title">Happy Birthday!</div>
+        <div id="final-name">Kuttuluuuu 💖</div>
+        <div id="final-divider">💗 ✨ 💗 ✨ 💗</div>
+        <div id="final-age" style="font-family: &quot;Orbitron&quot;, monospace; font-weight: 900; font-size: clamp(11px, 2vw, 15px); letter-spacing: 6px; color: rgba(255, 215, 0, 0.6); opacity: 0; transition: opacity 1s ease 1.55s; text-transform: uppercase">✦ turning 24 ✦</div>
+        <div id="final-message">Kummeyandiiiiiiii 👊👊👊👊</div>
+        <div id="final-emojis">🎉 🎉 🎉 🎉 🎉</div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
