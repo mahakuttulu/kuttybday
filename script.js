@@ -960,7 +960,7 @@ function showCakeScreen(){
       document.getElementById('blow-btn-wrap').style.transition='opacity .4s';
       document.getElementById('blow-btn-wrap').style.opacity='0';
       document.getElementById('blow-celebration').classList.add('show');
-      toast('inkoka surprise 💖',3000);
+      toast('I Hate Youuu 💖',3000);
       setTimeout(()=>{
         cs.style.transition='opacity .8s ease';cs.style.opacity='0';
         setTimeout(()=>{cs.style.display='none';cs.style.opacity='';res();},800);
@@ -1072,7 +1072,7 @@ function showFinalLetter(){
     lSc.style.transition="opacity 600ms";
     lSc.style.opacity="1";
     lCard.classList.add("show");
-    toast("💌 Read it again... 💖",3000);
+    toast("💖",3000);
   }));
 
   // typewrite page 1 again
