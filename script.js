@@ -960,7 +960,7 @@ function showCakeScreen(){
       document.getElementById('blow-btn-wrap').style.transition='opacity .4s';
       document.getElementById('blow-btn-wrap').style.opacity='0';
       document.getElementById('blow-celebration').classList.add('show');
-      toast('I HATE YOUUU 💖',3000);
+      toast('inkoka surprise 💖',3000);
       setTimeout(()=>{
         cs.style.transition='opacity .8s ease';cs.style.opacity='0';
         setTimeout(()=>{cs.style.display='none';cs.style.opacity='';res();},800);
@@ -1026,6 +1026,57 @@ function finalScreen() {
 
   setInterval(() => burst(80 + Math.random() * (innerWidth - 160), 80 + Math.random() * (innerHeight - 160), ["💗", "✨", "💖", "🌟", "🎊", "🌸"]), 3500);
   toast("👊👊👊👊👊", 6000);
+  setTimeout(()=>showFinalLetter(), 8000);
+}
+function showFinalLetter(){
+  const lSc=document.getElementById("letter-screen");
+  const lCard=document.getElementById("letter-card");
+
+  // reset to page 1
+  document.getElementById("lpage-1").classList.add("active");
+  document.getElementById("lpage-2").classList.remove("active");
+  document.getElementById("dot-1").classList.add("active");
+  document.getElementById("dot-2").classList.remove("active");
+  curLP=1;
+
+  // restore nav buttons
+  const pp=document.getElementById("btn-prev"),np=document.getElementById("btn-next");
+  pp.style.opacity="0";pp.style.pointerEvents="none";
+  np.style.opacity="1";np.style.pointerEvents="auto";
+
+  // restore page 1 text (typewrite it again)
+  const p1texts={lp1:"Happyyyy Birthdayyyy Kuttyyy 🎂",lp2:"Eee prapancham lo intha mandi undaga enduko meeru na life loki ravadam chala lucky anipistadi. Eppudu meetho matladina gunde jallu mantadi edo teliyiani feeling anubhaviste kani telidu emo",lp3:"Nannu edo oka special person laga chustaru.. oka spark vastadi adi naku eppatiki gurtuntadi. Adi evari kallalonu ippativaraku chudale. 🌸"};
+  ["lp1","lp2","lp3"].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML="";});
+
+  // restore page 2 text
+  const p2texts={lp4:"Eppatiki gurtunchukunta - mee navvu, mee chupu, mee maatalu , mee kopam , annitikanna ekkuva meeku naa pi unna abhimanam .",lp5:"Prathi roju nenu lechaka alochinche modati vyakthi, padukunemundu alochince akari vyakthi.. mereee okosari kallalo kuda 🙃🙃🙃. 💕",lp6:"Ilage inka chala chala chala Birthdays jarupukovali.. jarupukuntaru, I hate youuuuu. 🥂"};
+  ["lp4","lp5","lp6"].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML="";});
+
+  // pre-fill page 2 silently
+  Object.entries(p2texts).forEach(([id,txt])=>{
+    const el=document.getElementById(id);if(!el)return;
+    el.innerHTML="";
+    [...txt].forEach(ch=>{const sp=document.createElement("span");sp.className="char vis";sp.textContent=ch;el.appendChild(sp);});
+  });
+  const signEl=document.getElementById("lc-sign");
+  if(signEl){signEl.innerHTML="";[..."Appudu Ippudu Eppudu , Mee Pottyyyyyy 💖"].forEach(ch=>{const sp=document.createElement("span");sp.className="char vis";sp.textContent=ch;signEl.appendChild(sp);});}
+
+  // show letter over final screen
+  lSc.style.zIndex="180"; // above final screen
+  lSc.style.opacity="0";
+  lSc.style.display="flex";
+  lCard.classList.remove("show");
+  void lCard.offsetWidth;
+
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    lSc.style.transition="opacity 600ms";
+    lSc.style.opacity="1";
+    lCard.classList.add("show");
+    toast("💌 Read it again... 💖",3000);
+  }));
+
+  // typewrite page 1 again
+  setTimeout(()=>typewrite(["lp1","lp2","lp3"],27,280,p1texts),500);
 }
 
 function startAurora() {
